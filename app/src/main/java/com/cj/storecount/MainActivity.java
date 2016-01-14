@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.tencentStore).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new TencentStorePresenter().getBuyer();
+                new WDJStorePresenter().getSeller();
             }
         });
     }

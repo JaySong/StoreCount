@@ -14,23 +14,24 @@ import com.android.volley.toolbox.Volley;
  * @author JaySeng
  * @version 1.0.0
  */
-public class TencentStorePresenter implements StorePresenter{
+public class WDJStorePresenter implements StorePresenter {
     private static final String BUYER_URL = "http://android.myapp.com/myapp/detail.htm?apkName=com.lz.lswbuyer";
-    private static final String SELLER_URL = "http://android.myapp.com/myapp/detail.htm?apkName=com.lz.lswseller";
-    private static final String TAG = TencentStorePresenter.class.getSimpleName();
+    private static final String SELLER_URL = "http://www.wandoujia.com/apps/com.lz.lswseller";
+    private static final String TAG = WDJStorePresenter.class.getSimpleName();
     private final RequestQueue requestQueue;
 
-    public TencentStorePresenter() {
+
+    public WDJStorePresenter() {
         requestQueue = Volley.newRequestQueue(StoreApp.getApplication());
     }
 
+    @Override
     public void getBuyer() {
-
         StringRequest stringRequest = new StringRequest(BUYER_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, response);
-                String buyerCount = MatcherUtil.getTencentCount(response);
+                String buyerCount = MatcherUtil.getWDJCount(response);
 
                 Log.d(TAG, buyerCount);
 
@@ -51,7 +52,7 @@ public class TencentStorePresenter implements StorePresenter{
             @Override
             public void onResponse(String response) {
                 Log.d(TAG, response);
-                String buyerCount = MatcherUtil.getTencentCount(response);
+                String buyerCount = MatcherUtil.getWDJCount(response);
 
                 Log.d(TAG, buyerCount);
 
@@ -65,6 +66,4 @@ public class TencentStorePresenter implements StorePresenter{
 
         requestQueue.add(stringRequest);
     }
-
-
 }

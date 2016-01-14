@@ -24,8 +24,21 @@ public class MatcherUtil {
         return matcher.matches();
     }
 
-    public static String getTencentBuyerCount(String content) {
-        String reg = "^<div class=\"det-ins-num\">(\\d)下载</div>\n";
+    public static String getTencentCount(String content) {
+        String reg = "(\\d+)下载";
+        String str = content;
+        Pattern p = Pattern.compile(reg);
+        Matcher m = p.matcher(str);
+        if (m.find()) {
+            return m.group(1);
+        }
+        return null;
+    }
+    public static String getWDJCount(String content) {
+        /**
+         * data-install="164 "
+         */
+        String reg = "data-install=\"(\\d+)";
         String str = content;
         Pattern p = Pattern.compile(reg);
         Matcher m = p.matcher(str);
